@@ -1,10 +1,19 @@
 import express from 'express';
-import { getAllProducts, getProductById } from '../controllers/products.js';
+import {
+  getAllProducts,
+  getProductById,
+  createProduct,
+  updateProductById,
+  deleteProduct,
+} from '../controllers/products.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
 const router = express.Router();
 
 router.get('/', ctrlWrapper(getAllProducts));
-router.get('/:id', ctrlWrapper(getProductById));
+router.get('/:productId', ctrlWrapper(getProductById));
+router.post('/', ctrlWrapper(createProduct));
+router.patch('/:productId', ctrlWrapper(updateProductById));
+router.delete('/:id', deleteProduct);
 
 export default router;
